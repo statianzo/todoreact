@@ -4,8 +4,7 @@ import classnames from "classnames";
 
 import { REMOVE_COMPLETED_ITEMS } from "../constants";
 
-export function Footer({ todos, dispatch }) {
-    const { pathname: route } = useLocation();
+export function Footer({ todos, dispatch, route }) {
 
     const activeTodos = useMemo(() => todos.filter((todo) => !todo.completed), [todos]);
 
@@ -20,19 +19,19 @@ export function Footer({ todos, dispatch }) {
             <span className="todo-count">{`${activeTodos.length} ${activeTodos.length === 1 ? "item" : "items"} left!`}</span>
             <ul className="filters" data-testid="footer-navigation">
                 <li>
-                    <Link className={classnames({ selected: route === "/" })} to="/">
+                    <a className={classnames({ selected: route === "/" })} href="/">
                         All
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link className={classnames({ selected: route === "/active" })} to="/active">
+                    <a className={classnames({ selected: route === "/active" })} href="/active">
                         Active
-                    </Link>
+                    </a>
                 </li>
                 <li>
-                    <Link className={classnames({ selected: route === "/completed" })} to="/completed">
+                    <a className={classnames({ selected: route === "/completed" })} href="/completed">
                         Completed
-                    </Link>
+                    </a>
                 </li>
             </ul>
             <button className="clear-completed" disabled={activeTodos.length === todos.length} onClick={removeCompleted}>

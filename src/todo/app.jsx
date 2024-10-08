@@ -7,14 +7,14 @@ import { todoReducer } from "./reducer";
 
 import "./app.css";
 
-export function App() {
+export function App({route}) {
     const [todos, dispatch] = useReducer(todoReducer, []);
 
     return (
         <>
             <Header dispatch={dispatch} />
-            <Main todos={todos} dispatch={dispatch} />
-            <Footer todos={todos} dispatch={dispatch} />
+            <Main todos={todos} dispatch={dispatch} route={route} />
+            <Footer todos={todos} dispatch={dispatch} route={route} />
         </>
     );
 }

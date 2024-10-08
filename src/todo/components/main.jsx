@@ -6,8 +6,7 @@ import classnames from "classnames";
 
 import { TOGGLE_ALL } from "../constants";
 
-export function Main({ todos, dispatch }) {
-    const { pathname: route } = useLocation();
+export function Main({ todos, dispatch, route }) {
 
     const visibleTodos = useMemo(
         () =>
