@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import classnames from "classnames";
 
 import { REMOVE_COMPLETED_ITEMS } from "../constants";
@@ -20,19 +20,19 @@ export function Footer({ todos, dispatch }) {
             <span className="todo-count">{`${activeTodos.length} ${activeTodos.length === 1 ? "item" : "items"} left!`}</span>
             <ul className="filters" data-testid="footer-navigation">
                 <li>
-                    <a className={classnames({ selected: route === "/" })} href="#/">
+                    <Link className={classnames({ selected: route === "/" })} to="/">
                         All
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a className={classnames({ selected: route === "/active" })} href="#/active">
+                    <Link className={classnames({ selected: route === "/active" })} to="/active">
                         Active
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a className={classnames({ selected: route === "/completed" })} href="#/completed">
+                    <Link className={classnames({ selected: route === "/completed" })} to="/completed">
                         Completed
-                    </a>
+                    </Link>
                 </li>
             </ul>
             <button className="clear-completed" disabled={activeTodos.length === todos.length} onClick={removeCompleted}>
